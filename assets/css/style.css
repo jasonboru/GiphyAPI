@@ -1,0 +1,13 @@
+html {
+    height: 100%;
+}
+
+html {
+    position: relative;
+}
+
+body {
+    min-height: 100%;
+    background: url(../images/test_screen.jpg);
+    background-size: cover;
+}
