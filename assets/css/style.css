@@ -11,3 +11,7 @@ body {
     background: url(../images/test_screen.jpg);
     background-size: cover;
 }
+
+.tvShowBtn {
+	margin: 2px;
+}
