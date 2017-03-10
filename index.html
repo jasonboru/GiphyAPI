@@ -32,8 +32,10 @@
     <div class="container">
         <!-- bottom container -->
         <div class="row"> 
-            <div class="panel text-center col-xs-6 col-xs-push-3 col-sm-6 col-sm-push-3 col-md-3 col-md-push-9 col-lg-3 col-lg-push-9">
+            <div class="panel col-xs-6 col-xs-push-3 col-sm-6 col-sm-push-3 col-md-3 col-md-push-9 col-lg-3 col-lg-push-9">
                 <!-- side panel -->
+
+                <!--inline form
                 <form class="searchTermForm form-inline">
                     <div class="form-group">
                         <div class="input-group">
@@ -46,8 +48,45 @@
 							</span>
                         </div>
                     </div>
-                </form>
-                <img class="powered img-responsive" src="assets/images/powered_giphy.png" alt="Powered by Giphy">
+
+                </form>-->
+            <h3> Type in your TV show title and pick the number of gifs you'd like returned then click 'Submit' or just hit enter. </h3>
+
+            <form role="form" class="searchTermForm">
+
+              <!-- Here we create the text box for capturing the search term-->
+              <div class="form-group">
+                <div class="input-group">    
+                    <div class="input-group-addon">Search:    </div>
+                    <input type="text" class="form-control" placeholder="...." id="search-term">
+                </div>
+              </div>
+
+              <!-- Here we capture the number of records that the user wants to retrieve  -->
+              <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">Number:</div>
+                    <select class="form-control" id="num-records-select">
+                                <option value="5">5</option>
+                                <!-- Setting the option for 5 as default -->
+                                <option value="10" selected>10</option>
+                                <option value="15">15</option>
+                                <option value="20">20</option>
+                                <option value="25">25</option>
+                            </select>
+                </div>
+              </div>
+              <button id="submit-button" type="submit" class="submitBtn btn btn-default" id="run-search"><i class="fa fa-search"></i> Search</button>
+            </form>
+
+
+
+
+
+
+                <a href="http://api.giphy.com/" target="_blank">
+                    <img class="powered img-responsive" src="assets/images/powered_giphy.png" alt="Powered by Giphy">
+                </a>
                 <hr>
                 <div class="row">
                     <div class="col-lg-12">

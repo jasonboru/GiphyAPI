@@ -11,6 +11,8 @@ var topics = ["The Simpsons", "Rick and Morty", "Family Guy", //Array of initial
 
 var defaultGifs = "tv+shows";
 
+var limit = 10;
+
 
 
 function renderButtons() { //function to go through array and render the buttons to the DOM
@@ -36,6 +38,8 @@ $(document).on("click", "#submit-button", function() { //document click event on
         .replace(/\s/g, "+") //replace spaces to +
         .replace(/[^A-Za-z0-9+]/g, "") //removes non alpha-numeric characters (except the + symbol)
         .toLowerCase(); //changes all alpha characters to lower case
+
+    limit = $("#num-records-select").val();
 
     $("#search-term").val(''); //clear the search field after a submit by the user
 
@@ -71,7 +75,7 @@ function displayGifs(searchInput) { //display gifs function will populate the re
         $("#results1").empty();
         $("#results2").empty();
 
-        for (var i = 0; i < response.data.length; i++) { //cycle through the response
+        for (var i = 0; i < limit/*response.data.length*/; i++) { //cycle through the response
 
             var newDiv = $("<div>").addClass("result-div"); //add a new div to house each gif result
 
@@ -82,6 +86,10 @@ function displayGifs(searchInput) { //display gifs function will populate the re
                 .data("gif", response.data[i].images.original.url) // add a data-gif with the animated url
                 .data("mode", "still") // add a data-mode used to toggle play/pause
                 .appendTo(newDiv); // append the img into the new Div
+
+            var rating = $("<div>").addClass("rating")
+                .text(response.data[i].rating.toUpperCase())
+                .appendTo(newDiv);
 
             var x = i % 3; 
             var columnAssign = "#results" + x; //split the results into the 3 columns (currently not working right it is only splitting to 2, html or js issue??)
@@ -101,10 +109,10 @@ $(document).on("click", ".result", function() { // function that when clicking t
 
     if ($(this).data("mode") === "still") {  //if the gif has a cuurent data-mode of 'still' then run some code
         $(this).attr("src", $(this).data("gif")) //change the src attribute of the clicked gif to the value of its data-gif
-        .data("mode", "animate"); //change the data-mode to 'animate' so that the next click would run the else statement
+        .data("mode", "animate") //change the data-mode to 'animate' so that the next click would run the else statement
     } else { // if the giff does not have the data-mode value of 'still' run some code (by default if it is not still it will be animate)
         $(this).attr("src", $(this).data("orig")) //change the src attribute of the clicked gif to the value of its data-orig
-        .data("mode", "still"); //change the data-mode to 'still' so that the next click would run the if statement
+        .data("mode", "still") //change the data-mode to 'still' so that the next click would run the if statement
     }
 });
 
