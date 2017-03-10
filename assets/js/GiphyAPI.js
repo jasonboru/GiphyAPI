@@ -7,7 +7,7 @@ var queryURL = ""; //define queryURL as an empty string
 var topics = ["The Simpsons", "Rick and Morty", "Family Guy", //Array of initial buttons
     "Game of Thrones", "The Walking Dead", "Breaking Bad",
     "Parks and Recreation", "Seinfeld", "Arrested Development"
-]; 
+];
 
 var defaultGifs = "tv+shows";
 
@@ -39,17 +39,39 @@ $(document).on("click", "#submit-button", function() { //document click event on
         .replace(/[^A-Za-z0-9+]/g, "") //removes non alpha-numeric characters (except the + symbol)
         .toLowerCase(); //changes all alpha characters to lower case
 
-    limit = $("#num-records-select").val();
-
     $("#search-term").val(''); //clear the search field after a submit by the user
-
-    displayGifs(searchInput); // call the API function
-
-    topics.push(searchInput); // push the searchInput into the topics array
 
     console.log(topics);
 
-    renderButtons([searchInput]); // call the redener Buttons function
+    //validate user input
+    if (topics.indexOf(searchInput) === -1 && (searchInput !== '' && searchInput.match(/[A-Za-z0-9]/))) {
+
+        displayGifs(searchInput); // call the API function
+
+        topics.push(searchInput); // push the searchInput into the topics array
+
+        renderButtons([searchInput]); // call the redener Buttons function 
+
+    } else {
+
+        //alert user
+        if (searchInput === '' || searchInput.match(/[^A-Za-z0-9+]/)) {
+
+            //invalid entry alert
+            $("#alert-pop").append($("<div>")
+                .addClass("alert alert-danger")
+                .attr("role", "alert")
+                .text("Please Enter a Valid Term"));
+        } else {
+
+            //Duplicate term alert
+            $("#alert-pop").append($("<div>")
+                .addClass("alert alert-danger")
+                .attr("role", "alert")
+                .text("Duplicate: Please Enter a New Term"));
+        }
+    }
+
 });
 
 
@@ -63,19 +85,22 @@ function displayGifs(searchInput) { //display gifs function will populate the re
     queryURL = urlToAPI + searchInput + key //queryURL will be the endpoint + the applicable search term + the public key
 
     console.log(queryURL); //used to check that the total url is correct
-    
-    $.ajax({            //ajax call
+
+    $.ajax({ //ajax call
         url: queryURL,
         method: "GET"
     }).done(function(response) {
 
-        console.log(response); //log the response JSON of the API call 
+        console.log(response); //log the response JSON of the API call
 
+        limit = $("#num-records-select").val();
+
+        $("#alert-pop").empty();
         $("#results0").empty(); //empty the previous contents of the three columns of gif results before populating new results
         $("#results1").empty();
         $("#results2").empty();
 
-        for (var i = 0; i < limit/*response.data.length*/; i++) { //cycle through the response
+        for (var i = 0; i < limit /*response.data.length*/ ; i++) { //cycle through the response
 
             var newDiv = $("<div>").addClass("result-div"); //add a new div to house each gif result
 
@@ -91,7 +116,7 @@ function displayGifs(searchInput) { //display gifs function will populate the re
                 .text(response.data[i].rating.toUpperCase())
                 .appendTo(newDiv);
 
-            var x = i % 3; 
+            var x = i % 3;
             var columnAssign = "#results" + x; //split the results into the 3 columns (currently not working right it is only splitting to 2, html or js issue??)
 
             $(columnAssign).append(newDiv); //append the newDivs into the results area by columns
@@ -107,12 +132,12 @@ $(document).on("click", ".result", function() { // function that when clicking t
 
     console.log($(this).data("mode")); //logs the data-mode of the gif I used for de-bugging an issue
 
-    if ($(this).data("mode") === "still") {  //if the gif has a cuurent data-mode of 'still' then run some code
+    if ($(this).data("mode") === "still") { //if the gif has a cuurent data-mode of 'still' then run some code
         $(this).attr("src", $(this).data("gif")) //change the src attribute of the clicked gif to the value of its data-gif
-        .data("mode", "animate") //change the data-mode to 'animate' so that the next click would run the else statement
+            .data("mode", "animate") //change the data-mode to 'animate' so that the next click would run the else statement
     } else { // if the giff does not have the data-mode value of 'still' run some code (by default if it is not still it will be animate)
         $(this).attr("src", $(this).data("orig")) //change the src attribute of the clicked gif to the value of its data-orig
-        .data("mode", "still") //change the data-mode to 'still' so that the next click would run the if statement
+            .data("mode", "still") //change the data-mode to 'still' so that the next click would run the if statement
     }
 });
 

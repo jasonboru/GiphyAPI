@@ -31,74 +31,61 @@
     <!--/top container-->
     <div class="container">
         <!-- bottom container -->
-        <div class="row"> 
-            <div class="panel col-xs-6 col-xs-push-3 col-sm-6 col-sm-push-3 col-md-3 col-md-push-9 col-lg-3 col-lg-push-9">
+        <div class="row">
+            <div class="col-xs-6 col-xs-push-3 col-sm-6 col-sm-push-3 col-md-3 col-md-push-9 col-lg-3 col-lg-push-9">
                 <!-- side panel -->
+                <div class="panel panel-default">
+                    <div class="text-center panel-heading">
+                        <h2><i class="fa fa-cog" aria-hidden="true"></i> Controls</h2></div>
+                    <div class="panel-body form-wrapper">
+                        <p>Choose the number of gifs you want returned.</p>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">Number of Gifs:</div>
+                                <select class="text-center form-control" id="num-records-select">
+                                    <option value="5">5</option>
+                                    <!-- Setting the option for 5 as default -->
+                                    <option value="10" selected>10</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
+                                    <option value="25">25</option>
+                                </select>
+                            </div>
+                        </div>
+                        <p>Type in a search term to create a new button up top</p>
+                        <form class="searchTermForm form-inline">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-television" aria-hidden="true"></i></div>
+                                    <input type="text" class="form-control" placeholder="Search for..." id="search-term">
+                                    <span class="input-group-btn">
 
-                <!--inline form
-                <form class="searchTermForm form-inline">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="fa fa-television" aria-hidden="true"></i></div>
-                            <input type="text" class="form-control" placeholder="Search for..." id="search-term">
-                            <span class="input-group-btn">
-
-								<button id="submit-button" type="submit" value="search" class = "submitBtn btn btn-default">Submit</button>
-								
-							</span>
+                                <button id="submit-button" type="submit" value="search" class = "submitBtn btn btn-default">Submit</button>
+                                
+                            </span>
+                                </div>
+                            </div>
+                        </form>
+                        <div id="alert-pop"></div>
+                        <a href="http://api.giphy.com/" target="_blank">
+                            <img class="powered img-responsive" src="assets/images/powered_giphy.png" alt="Powered by Giphy">
+                        </a>
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <footer class="footer">
+                                    <div>
+                                        <p class="text-responsive text-center">&#169; Copyright 2017 Jason O'Brien</p>
+                                    </div>
+                                </footer>
+                            </div>
                         </div>
                     </div>
-
-                </form>-->
-            <h3> Type in your TV show title and pick the number of gifs you'd like returned then click 'Submit' or just hit enter. </h3>
-
-            <form role="form" class="searchTermForm">
-
-              <!-- Here we create the text box for capturing the search term-->
-              <div class="form-group">
-                <div class="input-group">    
-                    <div class="input-group-addon">Search:    </div>
-                    <input type="text" class="form-control" placeholder="...." id="search-term">
+                    <!--/form-wrapper-->
                 </div>
-              </div>
-
-              <!-- Here we capture the number of records that the user wants to retrieve  -->
-              <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-addon">Number:</div>
-                    <select class="form-control" id="num-records-select">
-                                <option value="5">5</option>
-                                <!-- Setting the option for 5 as default -->
-                                <option value="10" selected>10</option>
-                                <option value="15">15</option>
-                                <option value="20">20</option>
-                                <option value="25">25</option>
-                            </select>
-                </div>
-              </div>
-              <button id="submit-button" type="submit" class="submitBtn btn btn-default" id="run-search"><i class="fa fa-search"></i> Search</button>
-            </form>
-
-
-
-
-
-
-                <a href="http://api.giphy.com/" target="_blank">
-                    <img class="powered img-responsive" src="assets/images/powered_giphy.png" alt="Powered by Giphy">
-                </a>
-                <hr>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <footer class="footer">
-                            <div>
-                                <p class="text-center">&#169; Copyright 2017 Jason O'Brien</p>
-                            </div>
-                        </footer>
-                    </div>
-                </div>
+                <!--/side panel-->
             </div>
-            <!--/side panel-->
+            <!--panel column-->
             <div class="col-xs-12 col-sm-12 col-md-9 col-md-pull-3 col-lg-9 col-lg-pull-3">
                 <!-- gif results-->
                 <div class="row" id="allResults">

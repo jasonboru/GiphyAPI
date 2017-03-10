@@ -13,6 +13,11 @@ body {
     font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
 }
 
+hr {
+    border-color: #ed2c2e;
+    border-width: 3px;
+}
+
 .tvShowBtn {
 	margin: 2px 5px;
 	color: #fff;
@@ -26,14 +31,6 @@ body {
 .result {
 	margin: 10px auto;
 	border-radius: 5px;
-}
-
-.searchTermForm {
-	margin: 10px auto;
-}
-
-.powered {
-	margin: 10px auto;
 }
 
 .input-group-addon {
@@ -59,6 +56,20 @@ body {
 	background-size: cover;
 }
 
+.panel-default>.panel-heading {
+	color: #fff;
+    background-color: #ed2c2e;
+    border-color: #000;
+}
+
+.panel-default {
+    border-color: #000;
+}
+
+.panel-heading {
+	padding: 1px 15px;
+}
+
 .result-div {
 	position: relative;
 	padding-bottom: 1.5em;
@@ -79,3 +90,7 @@ body {
 	font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
 }
 
+.footer {
+	color: #ed2c2e;
+	font-size: 90%;
+}
