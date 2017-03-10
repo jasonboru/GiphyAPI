@@ -13,5 +13,41 @@ body {
 }
 
 .tvShowBtn {
-	margin: 2px;
+	margin: 2px 5px;
+	color: #fff;
+	background-color: #ed2c2e;
+	border-radius: 20%;
+	font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+	border: none;
+	font-size: 150%;
 }
+
+.result {
+	margin: 10px auto;
+}
+
+.searchTermForm {
+	margin: 10px auto;
+}
+
+.powered {
+	margin: 10px auto;
+}
+
+.input-group-addon {
+	color: #fff;
+	background-color: #ed2c2e;
+	border-color: #000;
+}
+
+.form-control {
+	border-color: #000;
+}
+
+.submitBtn {
+	background-color: #ed2c2e;
+	font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+	color: #fff;
+	border-color: #000;
+}
+

@@ -9,6 +9,10 @@ var topics = ["The Simpsons", "Rick and Morty", "Family Guy", //Array of initial
     "Parks and Recreation", "Seinfeld", "Arrested Development"
 ]; 
 
+var defaultGifs = "tv+shows";
+
+
+
 function renderButtons() { //function to go through array and render the buttons to the DOM
 
     $("#buttons").empty(); //clear old buttons before re-redering
@@ -30,7 +34,7 @@ $(document).on("click", "#submit-button", function() { //document click event on
     var searchInput = $("#search-term").val() // store the users entry search term as a variable
         .trim() //trim off leading & trailing spaces
         .replace(/\s/g, "+") //replace spaces to +
-        .replace(/[^A-Za-z0-9+]/g, "") //removes non alpha-numeric characters
+        .replace(/[^A-Za-z0-9+]/g, "") //removes non alpha-numeric characters (except the + symbol)
         .toLowerCase(); //changes all alpha characters to lower case
 
     $("#search-term").val(''); //clear the search field after a submit by the user
@@ -63,9 +67,9 @@ function displayGifs(searchInput) { //display gifs function will populate the re
 
         console.log(response); //log the response JSON of the API call 
 
-        $("#results1").empty(); //empty the previous contents of the three columns of gif results before populating new results
+        $("#results0").empty(); //empty the previous contents of the three columns of gif results before populating new results
+        $("#results1").empty();
         $("#results2").empty();
-        $("#results3").empty();
 
         for (var i = 0; i < response.data.length; i++) { //cycle through the response
 
@@ -109,5 +113,5 @@ $(document).ready(function() { //when the document loads
 
     renderButtons(topics); //render the initial buttons from the default array
 
-    displayGifs(); //display some default gifs (without a search term in place these are pretty generic, look into using something to make them have better context)
+    displayGifs(defaultGifs); //display some default gifs (without a search term in place these are pretty generic, look into using something to make them have better context)
 });
