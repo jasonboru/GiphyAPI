@@ -94,3 +94,11 @@ hr {
 	color: #ed2c2e;
 	font-size: 90%;
 }
+
+@media screen and (max-width: 768px) {
+	#powered {
+        max-height: 100px;
+        width: auto;
+        margin: auto;
+    }
+}
