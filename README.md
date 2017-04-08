@@ -7,7 +7,7 @@ https://fathomless-gorge-56781.herokuapp.com/
 
 Week 6 Project for the UCF Coding Bootcamp. In this assignment, I made a gif search app using the GIPHY API ta make a dynamic web page that populates with gifs of the users choice. It calls the GIPHY API and uses JavaScript and jQuery to change the HTML of the site.
 
-![GIPHY](images/screen_shot.jpg)
+![GIPHY](assets/images/screen_shot.jpg)
 
 
 ### Instructions
